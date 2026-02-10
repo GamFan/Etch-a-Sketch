@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <h1>Etch-a-sketch</h1>
+    <button>Resize</button>
+    <div class = etchSpace></div>
+
+    <script>
+        const canvas = document.querySelector(".etchSpace")
+
+        let boxes = 12
+
+        function createCanvas(boxes) {
+            for(let i = 0; i < boxes; i++) {//create 12 flexbox vertically
+                const flexContainer = document.createElement("flex");
+                flexContainer.classList.add("row") //add a class ID so that the flexbox can be modified in CSS
+                canvas.appendChild(flexContainer);
+
+                for(let u = 0; u < boxes; u++) {//create 12 divs horizontally in the flexbox
+                    const grids = document.createElement("div")
+                    grids.classList.add("grid")
+                    
+                    let holding = false;
+                    //add the event listener within the creation of the grid as adding it afterwords lead to detection issues
+                    document.addEventListener("mousedown", () => { //add a check when the mouse button is held
+                            holding = true;
+                        })
+                    grids.addEventListener("mouseover", (e) => { //trigger the hover status when mouse if held and over the element
+                           if (holding && e.buttons === 1) {grids.classList.add("hover")}
+                        })
+                    grids.addEventListener("mousedown", () => { //make a regular mouse click also trigger the hover status
+                           {grids.classList.add("hover")}
+                        })
+                    document.addEventListener("mouseup", () => { //remove the trigger status when the mouse button is no longer pressed
+                        holding = false;
+                    })
+                    grids.draggable = false; //prevent dragging 
+
+                    flexContainer.appendChild(grids)
+                }
+            }
+        }
+
+        let test = createCanvas(12)
+        console.log(test)
+
+    </script>
 </body>
 </html>

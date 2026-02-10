@@ -1,0 +1,28 @@
+.etchSpace {
+    display: flex;
+    flex-direction: column; /* make the elements display in a column */
+    flex-grow: 1; /* Makes the elements in the flex fill space automatically */
+    width: 1000px;
+    height: 1000px;
+}
+
+.column {
+    display: flex;
+    flex: auto;
+    flex-grow: 1;
+}
+
+.row {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.grid {
+    flex: auto;
+    border: 1px solid black;
+}
+
+.hover {
+    background-color: green;
+}
