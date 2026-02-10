@@ -6,12 +6,6 @@
     height: 1000px;
 }
 
-.column {
-    display: flex;
-    flex: auto;
-    flex-grow: 1;
-}
-
 .row {
     display: flex;
     flex: auto;
