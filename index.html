@@ -14,8 +14,7 @@
 
     <script>
         const canvas = document.querySelector(".etchSpace")
-
-        let boxes = 12
+        let initialCanvas = createCanvas(12)
 
         function createCanvas(boxes) {
             for(let i = 0; i < boxes; i++) {//create 12 flexbox vertically
@@ -48,8 +47,16 @@
             }
         }
 
-        let test = createCanvas(12)
-        console.log(test)
+        const resizeButton = document.querySelector("button")
+        resizeButton.addEventListener("click", () => {
+            let input = false;
+            let obtainNumber = prompt("Enter the desired number of boxes per side!")
+            while(obtainNumber > 100 || obtainNumber < 1) {
+                obtainNumber = prompt("The number must be 1 to 100!")
+            }
+             canvas.innerHTML = ""; //clear the canvas 
+             createCanvas(obtainNumber);
+             })
 
     </script>
 </body>
