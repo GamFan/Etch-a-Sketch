@@ -32,10 +32,12 @@
                             holding = true;
                         })
                     grids.addEventListener("mouseover", (e) => { //trigger the hover status when mouse if held and over the element
-                           if (holding && e.buttons === 1) {grids.classList.add("hover")}
+                           if (holding && e.buttons === 1) {
+                            grids.style.backgroundColor = generateColor()
+                            }
                         })
                     grids.addEventListener("mousedown", () => { //make a regular mouse click also trigger the hover status
-                           {grids.classList.add("hover")}
+                           grids.style.backgroundColor = generateColor()
                         })
                     document.addEventListener("mouseup", () => { //remove the trigger status when the mouse button is no longer pressed
                         holding = false;
@@ -45,6 +47,16 @@
                     flexContainer.appendChild(grids)
                 }
             }
+        }
+
+        //{grids.classList.add("hover")}
+        //replace {grids.style.backgroundColor = generateColor()} with the top declaration to have one color instead
+
+        function generateColor() {
+            const r = Math.floor(Math.random() * 256);  
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
         }
 
         const resizeButton = document.querySelector("button")
